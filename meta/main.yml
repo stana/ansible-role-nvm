@@ -1,10 +1,7 @@
 galaxy_info:
   author: stana 
-  description: nvm 
-  company:
-
+  description: NVM 
   license: "license (MIT)"
-
   min_ansible_version: 2.0
 
   #github_branch:
@@ -29,6 +26,5 @@ galaxy_info:
   galaxy_tags:
     - nvm
     - nodejs
-    - npm
 
 dependencies: []
