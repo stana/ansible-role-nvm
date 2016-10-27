@@ -1,0 +1,24 @@
+---
+- name: nmv installer fetch.
+  get_url: 
+      url: https://raw.githubusercontent.com/creationix/nvm/v{{nvm_ver}}/install.sh
+      dest: /tmp/nvm_install.sh 
+      mode: 0755 
+      owner: "{{ansible_user}}"
+      force: no
+
+- name: nvm installer run.
+  shell: "/tmp/nvm_install.sh"
+  environment:
+      NVM_DIR: "{{nvm_dir}}"
+  args:
+      creates: "{{nvm_dir}}"
+
+- name: nodejs installation.
+  shell: ". {{nvm_dir}}/nvm.sh && nvm install {{node_ver}}"
+  environment:
+      NVM_DIR: "{{nvm_dir}}"
+  when: not (node_ver is undefined or node_ver is none or node_ver | trim == '')
+
+#- name: nvm installer script clean up.
+#  file: path=/tmp/nvm_install.sh state=absent

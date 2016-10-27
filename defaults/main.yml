@@ -1,0 +1,4 @@
+---
+nvm_ver: '0.32.1'
+nvm_dir: /home/{{ansible_user}}/.nvm
+node_ver: '6.7'
